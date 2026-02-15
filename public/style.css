@@ -32,3 +32,36 @@ canvas {
     background-color: #1f1faa;
     color: #eee;
 }
+/* Fade overlay */
+#fadeOverlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    z-index: 10;
+}
+
+#fadeOverlay.active {
+    opacity: 1;
+}
+
+/* Heart animation */
+.heart {
+    position: fixed;
+    font-size: 24px;
+    animation: floatUp 3s linear forwards;
+    z-index: 20;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+    }
+}

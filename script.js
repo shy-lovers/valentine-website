@@ -50,16 +50,41 @@ function updateStars() {
 
 const button = document.getElementById("valentinesButton");
 
+const button = document.getElementById("valentinesButton");
+const overlay = document.getElementById("fadeOverlay");
+
+/* ========= EDIT THIS ========= */
+const REDIRECT_URL = "destination.html";
+/* ============================== */
+
 button.addEventListener("click", () => {
-  if (button.textContent === "Click Me! ❤") {
-    button.textContent = "loading...";
-      })
-      .catch(error => {
-        // Handle network errors or other issues
-        console.error('Error:', error);
-        button.textContent = "Error 😞";
-      });
-  }
+
+    button.style.display = "none";
+
+    // Create floating hearts
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight - 50 + "px";
+        heart.style.color = "pink";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000);
+    }
+
+    // Fade to black
+    setTimeout(() => {
+        overlay.classList.add("active");
+    }, 800);
+
+    // Redirect after dramatic pause
+    setTimeout(() => {
+        window.location.href = REDIRECT_URL;
+    }, 3000);
+});
+
 });
 
 function drawTextWithLineBreaks(lines, x, y, fontSize, lineHeight) {
